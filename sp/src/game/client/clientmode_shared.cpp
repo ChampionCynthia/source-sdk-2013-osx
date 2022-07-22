@@ -52,8 +52,9 @@
 #include "replay/vgui/replaymessagepanel.h"
 #include "econ/econ_controls.h"
 #include "econ/confirm_dialog.h"
-extern IClientReplayContext *g_pClientReplayContext;
-extern ConVar replay_rendersetting_renderglow;
+// For some reason, LLVM's preprocessor in Xcode 9 fails if these two lines are not commented out.
+// extern IClientReplayContext *g_pClientReplayContext;
+// extern ConVar replay_rendersetting_renderglow;
 #endif
 
 #if defined USES_ECON_ITEMS
@@ -1115,7 +1116,7 @@ void ClientModeShared::FireGameEvent( IGameEvent *event )
 			}
 		}
 
-		if ( team == 0 && GetLocalTeam() > 0 )
+		if ( team == 0 && GetLocalTeam() > (C_Team*) 0 )
 		{
 			bValidTeam = false;
 		}

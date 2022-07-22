@@ -24,7 +24,7 @@ GCC_REUSE_STRINGS = YES
 // with libc++ (which is trivial), you can remove CPP11_NO_LIBCXX and add the
 // following line to the xcconfig:
 // CLANG_CXX_LIBRARY = libc++
-GCC_PREPROCESSOR_DEFINITIONS = _DLL_EXT=.dylib NO_MALLOC_OVERRIDE=1 VPROF_LEVEL=1 NO_HOOK_MALLOC=1 PNG_NO_PEDANTIC_WARNINGS CPP11_NO_LIBCXX
+GCC_PREPROCESSOR_DEFINITIONS = _DLL_EXT=.dylib NO_MALLOC_OVERRIDE=1 VPROF_LEVEL=1 NO_HOOK_MALLOC=1 PNG_NO_PEDANTIC_WARNINGS
 BASE_CFLAGS= -Usprintf -Ustrncpy -UPROTECTED_THINGS_ENABLE -ftemplate-depth=512
 
 GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO
@@ -35,12 +35,13 @@ GCC_VERSION = com.apple.compilers.llvm.clang.1_0
 CC = $(SOURCE_ROOT)/devtools/bin/osx32/xcode_ccache_wrapper
 LDPLUSPLUS = $(DT_TOOLCHAIN_DIR)/usr/bin/clang++
 CLANG_WARN_CXX0X_EXTENSIONS = NO
-CLANG_CXX_LANGUAGE_STANDARD = gnu++11
+CLANG_CXX_LANGUAGE_STANDARD = gnu++17
 
 // include <memory.h> gets confused, 'cause ivp has one, and the system has one, and only one
 // gets into the header map, so sacrifice speed for corectness.
 USE_HEADERMAP = NO
 
-SDKROOT = macosx10.9
-MACOSX_DEPLOYMENT_TARGET = 10.5
+SDKROOT = macosx10.13
+MACOSX_DEPLOYMENT_TARGET = 10.7
 GCC_FAST_MATH = YES
+CLANG_CXX_LIBRARY = libc++
